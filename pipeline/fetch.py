@@ -34,6 +34,6 @@ def fetch_data():
         info = new_tick.history(start=start_date, end=end_date)
         data[t] = info
 
-    # uncomment to see if its working
-    print(data['AAPL'])
+    # uncomment to see if data is fetched
+    # print(data['AAPL'])
     return data
