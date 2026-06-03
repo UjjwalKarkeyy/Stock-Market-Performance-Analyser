@@ -24,8 +24,8 @@ import yfinance as yf
 
 def fetch_data():
     # getting the historical data (OHLCV) for 1 year
-    start_date = datetime.datetime(2025, 5, 1)
-    end_date = datetime.datetime(2026, 5, 1)
+    start_date = datetime.datetime(2025, 6, 1)
+    end_date = datetime.datetime(2026, 6, 1)
 
     # store OHLCV for each ticker in a dictionary
     data = {}

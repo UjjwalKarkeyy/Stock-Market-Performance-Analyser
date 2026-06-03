@@ -10,4 +10,5 @@ CREATE TABLE IF NOT EXISTS ohlcv(
 	volume float
 );
 
+ALTER TABLE ohlcv ADD CONSTRAINT U_Data UNIQUE (ticker, trade_date);
 
