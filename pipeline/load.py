@@ -4,7 +4,6 @@ def _insert_into_psql(df, tick, cur, conn):
     VALUES (%s, %s, %s, %s, %s, %s, %s)
     ON CONFLICT (ticker, trade_date) DO NOTHING;
     """
-
     rows = [
         (
             tick,
@@ -31,9 +30,6 @@ def load_sql(data, cur, conn, pd):
             _insert_into_psql(df, tick, cur, conn)
     except Exception as e:
         print(f'Exception occurred while loading data to PSQL: {e}')
-    finally:
-        cur.close()
-        conn.close()
 
 
 

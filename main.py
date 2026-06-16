@@ -3,6 +3,7 @@ from pipeline.clean import clean_data
 from pipeline.load import load_sql
 from decorators.progress_bar import progress_bar
 from config import create_conn
+from report.generate_report import generate_xl_report
 import pandas as pd
 import time
 
@@ -27,8 +28,16 @@ if __name__ == '__main__':
         # load data to psql
         load_sql(cleaned_data, cur, conn, pd)
         time.sleep(delay)
+
+        # exporting data from sql to excel
+        delay = progress_bar(task_name='EXPORTING TO EXCEL')
+        generate_xl_report(cur)
+        time.sleep(delay)
         print('ALL TASKS SUCCESSFULLY COMPLETED!!!')
 
     except Exception as err:
         print(f'Error connecting to PSQL: {err}')
+    finally:
+        cur.close()
+        conn.close()
   
